@@ -1,7 +1,7 @@
 package Hilos;
 
 
-public class Dilatacion_hilos extends Thread {
+public class Dilatacion extends Thread {
 
     private final int[][] matriz;
     private final int[][] result;
@@ -11,7 +11,7 @@ public class Dilatacion_hilos extends Thread {
     private final int endY;
     private final int opcion;
 
-    public Dilatacion_hilos(
+    public Dilatacion(
             int[][] matriz,
             int[][] result,
             int startX,
@@ -45,12 +45,24 @@ public class Dilatacion_hilos extends Thread {
     @Override
     public void run() {
         switch (opcion) {
-            case 1 -> procesarVecindad(this::maxOpcion1);
-            case 2 -> procesarVecindad(this::maxOpcion2);
-            case 3 -> procesarVecindad(this::maxOpcion3);
-            case 4 -> procesarVecindad(this::maxOpcion4);
-            case 5 -> procesarVecindad(this::maxOpcion5);
-            default -> procesarVecindad(this::maxOpcion6);
+            case 1:
+                procesarVecindad(this::maxOpcion1);
+                break;
+            case 2:
+                procesarVecindad(this::maxOpcion2);
+                break;
+            case 3:
+                procesarVecindad(this::maxOpcion3);
+                break;
+            case 4:
+                procesarVecindad(this::maxOpcion4);
+                break;
+            case 5:
+                procesarVecindad(this::maxOpcion5);
+                break;
+            default:
+                procesarVecindad(this::maxOpcion6);
+                break;
         }
     }
 

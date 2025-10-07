@@ -42,11 +42,12 @@ public class InterfazGrafica extends JFrame {
         comboOperacion = new JComboBox<>(new String[]{"Erosión", "Dilatación"});
         comboMetodo = new JComboBox<>(new String[]{"Secuencial", "Paralelo"});
         comboEstructurante = new JComboBox<>(new String[]{
-                "1 - Cuadrado 3x3",
-                "2 - Cruz 3x3",
-                "3 - Línea horizontal 1x3",
-                "4 - Línea vertical 3x1",
-                "5 - Diamante 5x5"
+                "1 - L invertida hacia abajo",
+                "2 - L invertida hacia arriba",
+                "3 - Línea horizontal",
+                "4 - Línea vertical",
+                "5 - Diagonal (X)",
+                "6 - Cruz clásica (+)"
         });
 
         btnEjecutar = new JButton("Ejecutar Operación");
@@ -121,9 +122,9 @@ public class InterfazGrafica extends JFrame {
 
             BufferedImage resultado;
             if (operacion == 1)
-                resultado = lecturaimagen.ejecutarErosionPNG(imagenCargada, metodo, estructurante);
+                resultado = main.ejecutarErosionPNG(imagenCargada, metodo, estructurante);
             else
-                resultado = lecturaimagen.ejecutarDilatacionPNG(imagenCargada, metodo, estructurante);
+                resultado = main.ejecutarDilatacionPNG(imagenCargada, metodo, estructurante);
 
             long fin = System.currentTimeMillis();
             double segundos = (fin - inicio) / 1000.0;

@@ -1,7 +1,7 @@
 package Hilos;
 
 
-public class Erosion_hilos extends Thread {
+public class Erosion extends Thread {
 
     private static final int PIXEL_MAX = 255;
 
@@ -13,7 +13,7 @@ public class Erosion_hilos extends Thread {
     private final int endY;
     private final int opcion;
 
-    public Erosion_hilos(
+    public Erosion(
             int[][] matriz,
             int[][] result,
             int startX,
@@ -47,12 +47,24 @@ public class Erosion_hilos extends Thread {
     @Override
     public void run() {
         switch (opcion) {
-            case 1 -> procesarVecindad(this::minOpcion1);
-            case 2 -> procesarVecindad(this::minOpcion2);
-            case 3 -> procesarVecindad(this::minOpcion3);
-            case 4 -> procesarVecindad(this::minOpcion4);
-            case 5 -> procesarVecindad(this::minOpcion5);
-            default -> procesarVecindad(this::minOpcion6);
+            case 1:
+                procesarVecindad(this::minOpcion1);
+                break;
+            case 2:
+                procesarVecindad(this::minOpcion2);
+                break;
+            case 3:
+                procesarVecindad(this::minOpcion3);
+                break;
+            case 4:
+                procesarVecindad(this::minOpcion4);
+                break;
+            case 5:
+                procesarVecindad(this::minOpcion5);
+                break;
+            default:
+                procesarVecindad(this::minOpcion6);
+                break;
         }
     }
 

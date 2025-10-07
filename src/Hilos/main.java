@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
- */
-public class lecturaimagen {
+
+public class main {
 
     // =====================  GUI =====================
 
@@ -124,25 +124,29 @@ public class lecturaimagen {
                 int gAgregado = esErosion ? 255 : 0;
                 int bAgregado = esErosion ? 255 : 0;
 
-                // Vecindario 3x3
+                // Vecindario 3x3: Se recorren los píxeles vecinos en un área de 3x3
                 for (int dy = -1; dy <= 1; dy++) {
-                    int ny = y + dy;
-                    if (ny < 0 || ny >= height) continue;
+                    int ny = y + dy; // Calcula la posición vertical del vecino
+                    if (ny < 0 || ny >= height) continue; // Verifica que el vecino esté dentro de los límites verticales
 
                     for (int dx = -1; dx <= 1; dx++) {
-                        int nx = x + dx;
-                        if (nx < 0 || nx >= width) continue;
+                        int nx = x + dx; // Calcula la posición horizontal del vecino
+                        if (nx < 0 || nx >= width) continue; // Verifica que el vecino esté dentro de los límites horizontales
 
+                        // Obtiene el valor RGB del píxel vecino
                         int rgb = src.getRGB(nx, ny);
-                        int r = (rgb >> 16) & 0xFF;
-                        int g = (rgb >> 8) & 0xFF;
-                        int b = (rgb) & 0xFF;
+                        int r = (rgb >> 16) & 0xFF; // Extrae el componente rojo
+                        int g = (rgb >> 8) & 0xFF;  // Extrae el componente verde
+                        int b = (rgb) & 0xFF;       // Extrae el componente azul
 
+                        // Aplica la operación morfológica (erosión o dilatación)
                         if (esErosion) {
+                            // En erosión, se toma el mínimo valor de cada canal
                             if (r < rAgregado) rAgregado = r;
                             if (g < gAgregado) gAgregado = g;
                             if (b < bAgregado) bAgregado = b;
                         } else {
+                            // En dilatación, se toma el máximo valor de cada canal
                             if (r > rAgregado) rAgregado = r;
                             if (g > gAgregado) gAgregado = g;
                             if (b > bAgregado) bAgregado = b;
